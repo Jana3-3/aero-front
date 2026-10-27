@@ -14,4 +14,4 @@ params = dict(wav_name= folder)
 response = requests.get(url, params)
 
 sound_class = response.json()['predicted classification']
-st.write(f"The predicted class is {sound_class}.")
+st.markdown(f"The predicted class is **{sound_class}**.")

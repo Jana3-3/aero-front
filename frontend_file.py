@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-st.title("First aerosound frontend!")
+st.title("First aerosound frontend")
 
 folder = st.text_input('please write down the file address:', '/kaggle/input/datasets/bisheshgiri/mimii-dataset/-6_dB_fan/fan/id_00/abnormal/00000000.wav')
 

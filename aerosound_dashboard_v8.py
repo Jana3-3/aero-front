@@ -6,6 +6,7 @@ import io
 import base64
 from pathlib import Path
 import numpy as np
+import soundfile as sf
 
 import requests
 import streamlit as st

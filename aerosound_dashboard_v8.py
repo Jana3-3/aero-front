@@ -5,6 +5,7 @@ Requires: streamlit, requests (plus existing frontend requirements).
 import io
 import base64
 from pathlib import Path
+import numpy as np
 
 import requests
 import streamlit as st

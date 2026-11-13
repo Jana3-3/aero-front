@@ -13,7 +13,7 @@ import html
 
 IMAGE_PATH = Path(__file__).with_name("aerosound_fan_v5.png")
 
-API_URL = SERVICE_URL
+API_URL = st.secrets['SERVICE_URL']
 
 st.set_page_config(page_title="AeroSound | Acoustic Monitoring", page_icon="🎧", layout="wide", initial_sidebar_state="collapsed")
 

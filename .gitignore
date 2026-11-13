@@ -1,3 +1,4 @@
 .env
+.streamlit/secrets.toml
 
 notebooks/jana-frontend.ipynb

@@ -1,5 +1,8 @@
 import streamlit as st
 import requests
+# import base64
+
+
 
 st.title("First aerosound frontend!")
 
@@ -16,7 +19,7 @@ if st.button('make a prediction'):
         #TODO:code a check for wav-file conformance!
         files = {"file": (uploaded_file.name, uploaded_file.getvalue(), "audio/wav")} # parameter from endpoint file = "file"
 
-        response_post = requests.post('https://aerosound-app-764002966062.europe-west1.run.app/predict', files=files)
+        response_post = requests.post(SERVICE_URL, files=files)
         # local:
         # response_post = requests.post('http://127.0.0.1:8080/predict', files=files)
 

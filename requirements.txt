@@ -28,6 +28,7 @@ referencing==0.37.0
 requests==2.34.2
 rpds-py==0.30.0
 six==1.17.0
+soundfile
 starlette==1.7.0
 streamlit==1.65.0
 toml==0.10.2

@@ -5,8 +5,6 @@ Requires: streamlit, requests (plus existing frontend requirements).
 import io
 import base64
 from pathlib import Path
-import numpy as np
-import soundfile as sf
 
 import requests
 import streamlit as st
@@ -17,7 +15,7 @@ IMAGE_PATH = Path(__file__).with_name("aerosound_fan_v5.png")
 
 API_URL = st.secrets['SERVICE_URL']
 
-st.set_page_config(page_title="AeroSound | Acoustic Monitoring", page_icon="🎧", layout="wide", initial_sidebar_state="collapsed")
+# Page configuration is handled by aerosound_presentation.py
 
 st.markdown("""
 <style>

@@ -72,4 +72,4 @@ if section == 'Presentation':
         st.image(str(SLIDES[i]), use_container_width=True)
 else:
     # The dashboard copy has no second set_page_config call.
-    runpy.run_path(str(HERE / 'dashboard_v8_preserved.py'), run_name='__main__')
+    runpy.run_path(str(HERE / 'aerosound_dashboard_v8.py'), run_name='__main__')

@@ -14,6 +14,10 @@ import html
 IMAGE_PATH = Path(__file__).with_name("aerosound_fan_v5.png")
 
 API_URL = st.secrets['SERVICE_URL']
+# to test the API locally:
+# API_URL = st.secrets['SERVICE_URL_LOCAL']
+# to test with local docker container:
+#API_URL = st.secrets['SERVICE_URL_LOCAL_D']
 
 # Page configuration is handled by aerosound_presentation.py
 
@@ -202,7 +206,7 @@ with right:
         st.error(f"Analysis failed: {st.session_state.error}")
     elif st.session_state.prediction == 0:
         st.markdown('<div class="result result-normal"><div style="font-size:14px;font-weight:750;margin-bottom:5px">03 &nbsp; Prediction result</div>✓ &nbsp; NORMAL</div>', unsafe_allow_html=True)
-        st.caption("No acoustic anomaly detected by this prototype model.")
+        st.caption("No acoustic anomaly detected in this prototype model.")
     elif st.session_state.prediction == 1:
         st.markdown('<div class="result result-abnormal"><div style="font-size:14px;font-weight:750;margin-bottom:5px">03 &nbsp; Prediction result</div>⚠ &nbsp; ABNORMAL</div>', unsafe_allow_html=True)
         st.caption("Potential acoustic anomaly detected. Further inspection may be needed.")

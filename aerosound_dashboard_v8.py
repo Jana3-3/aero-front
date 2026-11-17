@@ -105,6 +105,18 @@ h1,h2,h3 {color:#f4f9fc!important;}
   color:#123347!important;
   stroke:#123347!important;
 }
+
+/* Uploaded file icon container */
+[data-testid="stFileChip"] > div > div:first-child {
+    background-color: #e8f7f7 !important;
+}
+
+/* Uploaded file icon */
+[data-testid="stFileChip"] > div > div:first-child svg {
+    color: #0c827d !important;
+    stroke: #0c827d !important;
+}
+
 /* Chromium audio controls: enforce light controls, including during playback. */
 [data-testid="stAudio"] {background:#eaf2f6!important;border-radius:12px!important;padding:5px!important;color-scheme:light!important;}
 [data-testid="stAudio"] audio, audio {width:100%;color-scheme:light!important;background:#eaf2f6!important;border-radius:10px;}

@@ -108,7 +108,20 @@ h1,h2,h3 {color:#f4f9fc!important;}
 /* Verified selected-file chip styling (Firefox inspector). */
 [data-testid="stFileUploader"] [data-testid="stFileChip"] {background-color:#e8f7f7!important;color:#123347!important;border:1px solid #29c8bd!important;border-radius:8px!important;}
 [data-testid="stFileChip"] *,[data-testid="stFileChipName"] {color:#123347!important;opacity:1!important;}
-[data-testid="stFileChipDeleteBtn"] {color:#123347!important;}
+[data-testid="stFileChipDeleteBtn"] {
+  background-color:#ffffff!important;
+  color:#123347!important;
+  border:1px solid #8bcac8!important;
+  border-radius:7px!important;
+  box-shadow:none!important;
+}
+[data-testid="stFileChipDeleteBtn"]:hover {
+  background-color:#d6f6f1!important;
+}
+[data-testid="stFileChipDeleteBtn"] svg {
+  color:#123347!important;
+  stroke:#123347!important;
+}
 /* Chromium audio controls: enforce light controls, including during playback. */
 [data-testid="stAudio"] {background:#eaf2f6!important;border-radius:12px!important;padding:5px!important;color-scheme:light!important;}
 [data-testid="stAudio"] audio, audio {width:100%;color-scheme:light!important;background:#eaf2f6!important;border-radius:10px;}

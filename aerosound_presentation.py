@@ -7,7 +7,7 @@ import streamlit as st
 # test to wake up the API early enough
 import time, threading, requests
 
-WAKE_SLIDE = 2          # index of slide 3
+WAKE_SLIDE = 1          # index of slide 3
 WAKE_COOLDOWN = 60      # time (in sec) during which no new oing is needed
 API_URL = st.secrets['SERVICE_URL']
 
@@ -83,7 +83,7 @@ if section == 'Presentation':
         i = min(st.session_state.slide_index, len(SLIDES) - 1)
         #--------
         # test wake up ping
-        if i == WAKE_SLIDE:
+        if i >= WAKE_SLIDE:
             wake_api_if_needed()
         #---------
         left, center, right = st.columns([1, 2, 1], vertical_alignment='center')

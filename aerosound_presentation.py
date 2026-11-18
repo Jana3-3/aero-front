@@ -3,6 +3,29 @@ from pathlib import Path
 import runpy
 import streamlit as st
 
+#--------------
+# test to wake up the API early enough
+import time, threading, requests
+
+WAKE_SLIDE = 2          # index of slide 3
+WAKE_COOLDOWN = 60      # time (in sec) during which no new oing is needed
+API_URL = st.secrets['SERVICE_URL']
+
+def _wake_api():
+    try:
+        requests.get(f"{API_URL}/", timeout=120)
+    except Exception:
+        pass
+
+def wake_api_if_needed():
+    last = st.session_state.get("last_ping", 0)
+    if time.time() - last > WAKE_COOLDOWN:
+        st.session_state["last_ping"] = time.time()
+        threading.Thread(target=_wake_api, daemon=True).start()
+
+# part II see further down after else:-statement
+#-----------------------
+
 HERE = Path(__file__).resolve().parent
 SLIDES = sorted((HERE / 'slides').glob('slide-*.png'), key=lambda p: int(p.stem.split('-')[-1]))
 st.set_page_config(page_title='AeroSound | Demo Day', page_icon='🎧', layout='wide', initial_sidebar_state='collapsed')
@@ -58,6 +81,11 @@ if section == 'Presentation':
         st.error('Slide images missing: expected slides/slide-1.png through slide-5.png')
     else:
         i = min(st.session_state.slide_index, len(SLIDES) - 1)
+        #--------
+        # test wake up ping
+        if i == WAKE_SLIDE:
+            wake_api_if_needed()
+        #---------
         left, center, right = st.columns([1, 2, 1], vertical_alignment='center')
         with left:
             if st.button('← Previous', key='slide_previous', disabled=(i == 0), use_container_width=True):

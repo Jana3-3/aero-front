@@ -5,6 +5,7 @@ Requires: streamlit, requests (plus existing frontend requirements).
 import io
 import base64
 from pathlib import Path
+import threading
 
 import requests
 import streamlit as st
@@ -18,6 +19,22 @@ API_URL = st.secrets['SERVICE_URL']
 # API_URL = st.secrets['SERVICE_URL_LOCAL']
 # to test with local docker container:
 #API_URL = st.secrets['SERVICE_URL_LOCAL_D']
+
+#------------------------
+# ensuring, that the container is already running, when clicking on predict
+# by sending a wake-up-ping to the API
+
+def _wake_api():
+    try:
+        requests.get(f"{API_URL}/", timeout=120)
+    except Exception:
+        pass  # errors do not matter, it is only a wake-up-call
+
+# only ping once per session, not at each rerun
+if "api_pinged" not in st.session_state:
+    threading.Thread(target=_wake_api, daemon=True).start()
+    st.session_state["api_pinged"] = True
+#------------------------------
 
 # Page configuration is handled by aerosound_presentation.py
 
